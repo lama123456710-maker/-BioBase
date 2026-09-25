@@ -1,0 +1,5686 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<title>BioBase | منصة الأحياء</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+ --primary:#7653d6;
+ --primary-dark:#5e3fba;
+ --primary-light:#f0eaff;
+ --bg:#faf9fd;
+ --card:#fff;
+ --text:#24202d;
+ --muted:#777080;
+ --border:#ebe7f2;
+ --success:#35a66f;
+ --danger:#d9536f;
+ --shadow:0 10px 30px rgba(55,35,90,.08);
+ --radius:20px;
+}
+
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ font-family:Tajawal,sans-serif;
+ background:var(--bg);
+ color:var(--text);
+}
+
+button,input,select,textarea{
+ font-family:inherit;
+}
+
+button{
+ cursor:pointer;
+ border:0;
+}
+
+.hidden{
+ display:none!important;
+}
+
+/* NAV */
+.nav{
+ height:72px;
+ padding:0 6%;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ background:white;
+ border-bottom:1px solid var(--border);
+}
+
+.logo{
+ font-size:25px;
+ font-weight:800;
+ color:var(--primary);
+}
+
+.logo span{
+ color:#333;
+}
+
+/* LANDING */
+.hero{
+ min-height:650px;
+ padding:80px 7%;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:50px;
+}
+
+.hero-text{
+ max-width:570px;
+}
+
+.badge{
+ display:inline-block;
+ padding:9px 15px;
+ background:var(--primary-light);
+ color:var(--primary);
+ border-radius:30px;
+ font-weight:700;
+}
+
+.hero h1{
+ font-size:55px;
+ line-height:1.15;
+ margin:20px 0;
+}
+
+.hero p{
+ font-size:19px;
+ line-height:2;
+ color:var(--muted);
+}
+
+.btn{
+ padding:13px 22px;
+ border-radius:13px;
+ font-weight:700;
+ font-size:15px;
+}
+
+.btn-primary{
+ background:var(--primary);
+ color:white;
+}
+
+.btn-primary:hover{
+ background:var(--primary-dark);
+}
+
+.btn-outline{
+ background:white;
+ color:var(--primary);
+ border:1px solid var(--primary);
+}
+
+.hero-buttons{
+ display:flex;
+ gap:12px;
+ margin-top:25px;
+ flex-wrap:wrap;
+}
+
+/* DNA */
+.visual{
+ width:390px;
+ height:390px;
+ border-radius:50%;
+ background:var(--primary-light);
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ position:relative;
+}
+
+.dna{
+ font-size:145px;
+}
+
+.float-card{
+ position:absolute;
+ background:white;
+ padding:14px 18px;
+ border-radius:15px;
+ box-shadow:var(--shadow);
+ font-weight:700;
+}
+
+.f1{
+ top:30px;
+ right:-20px;
+}
+
+.f2{
+ bottom:45px;
+ left:-30px;
+}
+
+.f3{
+ top:45%;
+ right:-45px;
+}
+
+/* FEATURES */
+.features{
+ padding:60px 7%;
+ background:white;
+}
+
+.section-title{
+ text-align:center;
+ margin-bottom:35px;
+}
+
+.section-title h2{
+ font-size:32px;
+}
+
+.section-title p{
+ color:var(--muted);
+}
+
+.feature-grid{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:18px;
+}
+
+.feature{
+ padding:28px;
+ border:1px solid var(--border);
+ border-radius:var(--radius);
+ background:white;
+ text-align:center;
+}
+
+.feature-icon{
+ font-size:40px;
+}
+
+.feature h3{
+ margin-bottom:8px;
+}
+
+.feature p{
+ color:var(--muted);
+ line-height:1.8;
+}
+
+/* FOOTER */
+footer{
+ padding:35px 7%;
+ background:#292332;
+ color:white;
+ text-align:center;
+}
+
+footer p{
+ color:#cfc8d8;
+}
+
+/* APP */
+#app{
+ min-height:100vh;
+ display:flex;
+}
+
+.sidebar{
+ width:270px;
+ background:white;
+ border-left:1px solid var(--border);
+ padding:20px;
+ position:fixed;
+ right:0;
+ top:0;
+ bottom:0;
+ overflow:auto;
+ z-index:20;
+}
+
+.app-main{
+ margin-right:270px;
+ width:calc(100% - 270px);
+}
+
+.side-logo{
+ font-size:25px;
+ font-weight:800;
+ color:var(--primary);
+ margin-bottom:25px;
+}
+
+.user-box{
+ background:var(--primary-light);
+ padding:15px;
+ border-radius:15px;
+ margin-bottom:20px;
+}
+
+.user-name{
+ font-weight:800;
+}
+
+.user-email{
+ font-size:12px;
+ color:var(--muted);
+ margin-top:4px;
+ word-break:break-all;
+}
+
+.side-title{
+ color:var(--muted);
+ font-size:13px;
+ margin:20px 5px 10px;
+}
+
+.subject-btn{
+ width:100%;
+ text-align:right;
+ background:white;
+ padding:12px;
+ border-radius:12px;
+ margin-bottom:5px;
+ font-weight:600;
+}
+
+.subject-btn:hover,
+.subject-btn.active{
+ background:var(--primary-light);
+ color:var(--primary);
+}
+
+.side-actions button{
+ width:100%;
+ margin-top:8px;
+ padding:11px;
+ border-radius:12px;
+ background:#f6f4f9;
+ text-align:right;
+}
+
+.admin-btn{
+ color:var(--primary)!important;
+}
+
+.app-header{
+ padding:22px 30px;
+ background:white;
+ border-bottom:1px solid var(--border);
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:20px;
+}
+
+.mobile-menu{
+ display:none;
+ background:var(--primary-light);
+ color:var(--primary);
+ padding:10px 14px;
+ border-radius:10px;
+}
+
+.subscription{
+ padding:9px 14px;
+ border-radius:20px;
+ background:#f3f1f6;
+ font-size:13px;
+}
+
+.subscription.active{
+ background:#e3f7ed;
+ color:var(--success);
+}
+
+.content-wrap{
+ padding:30px;
+}
+
+.subject-hero{
+ background:linear-gradient(135deg,#f0eaff,#fff);
+ padding:30px;
+ border-radius:25px;
+ margin-bottom:25px;
+}
+
+.subject-hero h1{
+ margin:0 0 8px;
+}
+
+.subject-hero p{
+ color:var(--muted);
+}
+
+.section-grid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:18px;
+}
+
+.section-card{
+ background:white;
+ border:1px solid var(--border);
+ border-radius:20px;
+ padding:22px;
+ box-shadow:var(--shadow);
+ position:relative;
+ cursor:pointer;
+ overflow:hidden;
+ transition:.2s;
+}
+
+.section-card:hover{
+ transform:translateY(-2px);
+}
+
+.section-cover{
+ width:calc(100% + 44px);
+ height:150px;
+ margin:-22px -22px 15px;
+ object-fit:cover;
+ display:block;
+ background:var(--primary-light);
+}
+
+.section-icon{
+ font-size:35px;
+}
+
+.section-card h3{
+ margin:12px 0 8px;
+}
+
+.section-card p{
+ color:var(--muted);
+ font-size:13px;
+}
+
+.free{
+ color:var(--success);
+ font-weight:700;
+}
+
+.locked{
+ color:var(--danger);
+ font-weight:700;
+}
+
+/* CONTENT */
+.content-panel{
+ margin-top:25px;
+ background:white;
+ border:1px solid var(--border);
+ border-radius:20px;
+ padding:25px;
+}
+
+.tabs{
+ display:flex;
+ gap:8px;
+ flex-wrap:wrap;
+ margin-bottom:20px;
+}
+
+.tab{
+ padding:10px 15px;
+ background:#f5f3f8;
+ border-radius:10px;
+}
+
+.tab.active{
+ background:var(--primary);
+ color:white;
+}
+
+.content-item{
+ padding:18px;
+ border:1px solid var(--border);
+ border-radius:15px;
+ margin-bottom:12px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:15px;
+}
+
+.content-title{
+ font-weight:700;
+}
+
+.content-desc{
+ color:var(--muted);
+ font-size:13px;
+ margin-top:5px;
+}
+
+.complete-btn{
+ padding:9px 13px;
+ border-radius:10px;
+ background:#f2f0f5;
+ white-space:nowrap;
+}
+
+.complete-btn.done{
+ background:#e1f6eb;
+ color:var(--success);
+}
+
+.media-box{
+ margin-top:15px;
+ background:#f8f6fc;
+ border-radius:15px;
+ padding:10px;
+ overflow:hidden;
+}
+
+.media-box video{
+ width:100%;
+ max-height:500px;
+ border-radius:12px;
+ background:#000;
+}
+
+.media-box img{
+ width:100%;
+ max-height:600px;
+ object-fit:contain;
+ border-radius:12px;
+}
+
+/* QUIZ */
+.quiz-box{
+ background:#faf9fd;
+ border:1px solid var(--border);
+ border-radius:18px;
+ padding:20px;
+ margin-top:15px;
+}
+
+.quiz-question{
+ background:white;
+ border:1px solid var(--border);
+ border-radius:15px;
+ padding:18px;
+ margin-bottom:15px;
+}
+
+.quiz-question-title{
+ font-weight:800;
+ margin-bottom:15px;
+ line-height:1.8;
+}
+
+.quiz-option{
+ display:block;
+ padding:12px;
+ border:1px solid var(--border);
+ border-radius:11px;
+ margin:8px 0;
+ cursor:pointer;
+ transition:.15s;
+}
+
+.quiz-option:hover{
+ background:var(--primary-light);
+}
+
+.quiz-option input{
+ margin-left:8px;
+}
+
+.quiz-result{
+ background:#e9f8f0;
+ color:#267d53;
+ border-radius:15px;
+ padding:18px;
+ margin-top:15px;
+ font-weight:700;
+ text-align:center;
+ font-size:18px;
+}
+
+/* AUTH */
+.modal{
+ position:fixed;
+ inset:0;
+ background:rgba(20,15,30,.5);
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ padding:20px;
+ z-index:100;
+}
+
+.modal-box{
+ width:430px;
+ max-width:100%;
+ background:white;
+ border-radius:24px;
+ padding:28px;
+ position:relative;
+ box-shadow:0 25px 70px rgba(0,0,0,.2);
+}
+
+.close{
+ position:absolute;
+ top:15px;
+ left:15px;
+ background:#f5f2f8;
+ width:35px;
+ height:35px;
+ border-radius:50%;
+}
+
+.auth-tabs{
+ display:flex;
+ background:#f5f2f8;
+ padding:5px;
+ border-radius:12px;
+ margin:20px 0;
+}
+
+.auth-tab{
+ flex:1;
+ padding:10px;
+ border-radius:9px;
+ background:transparent;
+}
+
+.auth-tab.active{
+ background:white;
+ color:var(--primary);
+ font-weight:700;
+}
+
+.field{
+ margin-bottom:14px;
+}
+
+.field label{
+ display:block;
+ font-size:13px;
+ margin-bottom:6px;
+ font-weight:600;
+}
+
+.field input,
+.field select,
+.field textarea{
+ width:100%;
+ padding:13px;
+ border:1px solid var(--border);
+ border-radius:11px;
+ outline:none;
+ background:white;
+}
+
+.field textarea{
+ min-height:90px;
+ resize:vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+ border-color:var(--primary);
+}
+
+.full{
+ width:100%;
+}
+
+.auth-message{
+ background:#fff7e5;
+ color:#86651d;
+ padding:11px;
+ border-radius:10px;
+ font-size:13px;
+ margin-bottom:15px;
+}
+
+/* ADMIN */
+.admin-grid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:20px;
+}
+
+.admin-card{
+ background:white;
+ border:1px solid var(--border);
+ border-radius:20px;
+ padding:22px;
+}
+
+.admin-card h2{
+ margin-top:0;
+}
+
+.file-note{
+ background:#f8f6fc;
+ color:var(--muted);
+ padding:12px;
+ border-radius:11px;
+ font-size:13px;
+ line-height:1.8;
+ margin-bottom:15px;
+}
+
+.quiz-builder{
+ background:#f8f6fc;
+ padding:15px;
+ border-radius:15px;
+ margin-top:10px;
+}
+
+.admin-question{
+ background:white;
+ padding:15px;
+ border-radius:14px;
+ border:1px solid var(--border);
+ margin-bottom:12px;
+}
+
+.admin-question-header{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin-bottom:10px;
+}
+
+.correct-row{
+ display:flex;
+ align-items:center;
+ gap:8px;
+ margin-bottom:8px;
+}
+
+.correct-row input[type="text"]{
+ flex:1;
+}
+
+.remove-question{
+ background:#fff0f3;
+ color:var(--danger);
+ padding:7px 10px;
+ border-radius:8px;
+}
+
+.add-question{
+ width:100%;
+ background:#f0eaff;
+ color:var(--primary);
+ padding:11px;
+ border-radius:10px;
+ font-weight:700;
+ margin-top:5px;
+}
+
+.student-card{
+ border:1px solid var(--border);
+ padding:18px;
+ border-radius:16px;
+ margin-top:12px;
+}
+
+.student-top{
+ display:flex;
+ justify-content:space-between;
+ gap:10px;
+}
+
+.progress{
+ height:9px;
+ background:#eeeaf3;
+ border-radius:10px;
+ overflow:hidden;
+ margin:10px 0;
+}
+
+.progress-bar{
+ height:100%;
+ background:var(--primary);
+}
+
+.grade-row{
+ display:flex;
+ justify-content:space-between;
+ gap:15px;
+ padding:8px 0;
+ border-bottom:1px solid #f0edf3;
+}
+
+.analysis{
+ background:#f8f6fc;
+ padding:13px;
+ border-radius:12px;
+ margin-top:12px;
+ line-height:1.8;
+}
+
+.admin-quiz-result{
+ padding:10px;
+ background:#f8f6fc;
+ border-radius:10px;
+ margin-top:8px;
+}
+
+/* GRADES */
+.grade-box{
+ margin-top:25px;
+ background:white;
+ border:1px solid var(--border);
+ border-radius:20px;
+ padding:25px;
+}
+
+.grade-list{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:12px;
+}
+
+.grade-stat{
+ padding:15px;
+ background:#f8f6fc;
+ border-radius:14px;
+ text-align:center;
+}
+
+.grade-stat strong{
+ display:block;
+ font-size:25px;
+ color:var(--primary);
+}
+
+/* LOADING */
+.loading{
+ position:fixed;
+ inset:0;
+ background:rgba(255,255,255,.92);
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ z-index:200;
+ font-weight:700;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+
+ .hero{
+  flex-direction:column;
+  text-align:center;
+  padding-top:50px;
+ }
+
+ .hero h1{
+  font-size:42px;
+ }
+
+ .visual{
+  width:300px;
+  height:300px;
+ }
+
+ .feature-grid{
+  grid-template-columns:repeat(2,1fr);
+ }
+
+ .section-grid{
+  grid-template-columns:1fr;
+ }
+
+ .sidebar{
+  transform:translateX(100%);
+  transition:.25s;
+ }
+
+ .sidebar.open{
+  transform:translateX(0);
+ }
+
+ .app-main{
+  margin-right:0;
+  width:100%;
+ }
+
+ .mobile-menu{
+  display:block;
+ }
+
+ .app-header{
+  padding:15px;
+ }
+
+ .content-wrap{
+  padding:18px;
+ }
+
+ .admin-grid{
+  grid-template-columns:1fr;
+ }
+
+ .grade-list{
+  grid-template-columns:1fr;
+ }
+
+}
+
+@media(max-width:500px){
+
+ .feature-grid{
+  grid-template-columns:1fr;
+ }
+
+ .hero h1{
+  font-size:34px;
+ }
+
+ .visual{
+  width:250px;
+  height:250px;
+ }
+
+ .content-item{
+  flex-direction:column;
+  align-items:flex-start;
+ }
+
+ .student-top{
+  flex-direction:column;
+ }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= LANDING ================= -->
+
+<div id="landing">
+
+<nav class="nav">
+
+ <div class="logo">
+  Bio<span>Base</span> 🧬
+ </div>
+
+ <div>
+
+  <button
+   class="btn btn-outline"
+   onclick="openAuth('login')">
+   تسجيل الدخول
+  </button>
+
+  <button
+   class="btn btn-primary"
+   onclick="openAuth('signup')">
+   إنشاء حساب
+  </button>
+
+ </div>
+
+</nav>
+
+
+<section class="hero">
+
+ <div class="hero-text">
+
+  <span class="badge">
+   🧬 منصة تعليمية لطلاب الأحياء
+  </span>
+
+  <h1>
+   تعلّم الأحياء<br>
+   بطريقة أذكى
+  </h1>
+
+  <p>
+   تجميعات، شروحات، اختبارات وملخصات
+   تساعدك على تنظيم دراستك ومتابعة تطورك
+   خطوة بخطوة.
+  </p>
+
+  <div class="hero-buttons">
+
+   <button
+    class="btn btn-primary"
+    onclick="browsePlatform()">
+    استكشفي المنصة
+   </button>
+
+   <button
+    class="btn btn-outline"
+    onclick="openAuth('signup')">
+    ابدئي الآن
+   </button>
+
+  </div>
+
+ </div>
+
+
+ <div class="visual">
+
+  <div class="dna">
+   🧬
+  </div>
+
+  <div class="float-card f1">
+   📝 تجميعات
+  </div>
+
+  <div class="float-card f2">
+   🧠 اختبارات
+  </div>
+
+  <div class="float-card f3">
+   🎥 شروحات
+  </div>
+
+ </div>
+
+</section>
+
+
+<section class="features">
+
+ <div class="section-title">
+
+  <h2>
+   كل ما تحتاجينه في مكان واحد
+  </h2>
+
+  <p>
+   نظام تعليمي يساعدك على الدراسة والمتابعة
+  </p>
+
+ </div>
+
+
+ <div class="feature-grid">
+
+  <div class="feature">
+
+   <div class="feature-icon">
+    🎥
+   </div>
+
+   <h3>
+    الشروحات
+   </h3>
+
+   <p>
+    فيديوهات وشروحات حقيقية مرفوعة على المنصة.
+   </p>
+
+  </div>
+
+
+  <div class="feature">
+
+   <div class="feature-icon">
+    📝
+   </div>
+
+   <h3>
+    التجميعات
+   </h3>
+
+   <p>
+    تجميعات منظمة حسب المقرر والميد.
+   </p>
+
+  </div>
+
+
+  <div class="feature">
+
+   <div class="feature-icon">
+    🧠
+   </div>
+
+   <h3>
+    الاختبارات
+   </h3>
+
+   <p>
+    اختبارات قصيرة تفاعلية مع نتيجة مباشرة.
+   </p>
+
+  </div>
+
+
+  <div class="feature">
+
+   <div class="feature-icon">
+    📊
+   </div>
+
+   <h3>
+    متابعة مستواك
+   </h3>
+
+   <p>
+    شاهدي درجاتك ونسبة إنجازك وتطورك.
+   </p>
+
+  </div>
+
+ </div>
+
+</section>
+
+
+<footer>
+
+ <div class="logo">
+  BioBase 🧬
+ </div>
+
+ <p>
+  منصة تعليمية لطلاب الأحياء
+ </p>
+
+ <p>
+  واتساب: 0563380190 · lmy464752@gmail.com
+ </p>
+
+</footer>
+
+</div>
+
+
+<!-- ================= APP ================= -->
+
+<div id="app" class="hidden">
+
+<aside
+ class="sidebar"
+ id="sidebar">
+
+ <div class="side-logo">
+  BioBase 🧬
+ </div>
+
+
+ <div class="user-box">
+
+  <div
+   class="user-name"
+   id="sideUserName">
+   زائر
+  </div>
+
+  <div
+   class="user-email"
+   id="sideUserEmail">
+   سجلي الدخول للمتابعة
+  </div>
+
+ </div>
+
+
+ <div class="side-title">
+  المواد
+ </div>
+
+ <div id="subjectsList"></div>
+
+
+ <div class="side-actions">
+
+  <button
+   id="gradesBtn"
+   onclick="showGrades()"
+   class="hidden">
+   📊 درجات الطلاب والتحليل الإحصائي
+  </button>
+
+
+  <button
+   id="adminBtn"
+   onclick="showAdmin()"
+   class="admin-btn hidden">
+   ⚙️ لوحة المشرفة
+  </button>
+
+
+  <button
+   id="loginSideBtn"
+   onclick="openAuth('login')">
+   🔐 تسجيل الدخول
+  </button>
+
+
+  <button
+   id="logoutBtn"
+   onclick="logout()"
+   class="hidden">
+   🚪 تسجيل الخروج
+  </button>
+
+ </div>
+
+</aside>
+
+
+<main class="app-main">
+
+ <header class="app-header">
+
+  <button
+   class="mobile-menu"
+   onclick="toggleSidebar()">
+   ☰
+  </button>
+
+  <div>
+   <strong>
+    منصة BioBase
+   </strong>
+  </div>
+
+  <div
+   id="subscriptionStatus"
+   class="subscription">
+   تصفح مجاني
+  </div>
+
+ </header>
+
+
+ <div
+  class="content-wrap"
+  id="mainContent">
+
+  <div class="subject-hero">
+
+   <h1>
+    مرحبًا بك في BioBase 🧬
+   </h1>
+
+   <p>
+    اختاري المادة للبدء.
+   </p>
+
+  </div>
+
+  <div id="sectionsArea"></div>
+
+ </div>
+
+</main>
+
+</div>
+
+
+<!-- ================= AUTH ================= -->
+
+<div
+ class="modal hidden"
+ id="authModal">
+
+ <div class="modal-box">
+
+  <button
+   class="close"
+   onclick="closeAuth()">
+   ×
+  </button>
+
+
+  <h2 id="authTitle">
+   تسجيل الدخول
+  </h2>
+
+
+  <div
+   id="authMessage"
+   class="auth-message hidden">
+  </div>
+
+
+  <div class="auth-tabs">
+
+   <button
+    id="loginTab"
+    class="auth-tab active"
+    onclick="switchAuth('login')">
+    تسجيل الدخول
+   </button>
+
+   <button
+    id="signupTab"
+    class="auth-tab"
+    onclick="switchAuth('signup')">
+    إنشاء حساب
+   </button>
+
+  </div>
+
+
+  <div
+   id="signupFields"
+   class="hidden">
+
+   <div class="field">
+
+    <label>
+     الاسم الأول
+    </label>
+
+    <input
+     id="firstName"
+     type="text">
+
+   </div>
+
+
+   <div class="field">
+
+    <label>
+     اسم العائلة
+    </label>
+
+    <input
+     id="familyName"
+     type="text">
+
+   </div>
+
+  </div>
+
+
+  <div class="field">
+
+   <label>
+    البريد الإلكتروني
+   </label>
+
+   <input
+    id="authEmail"
+    type="email">
+
+  </div>
+
+
+  <div class="field">
+
+   <label>
+    كلمة المرور
+   </label>
+
+   <input
+    id="authPassword"
+    type="password">
+
+  </div>
+
+
+  <button
+   class="btn btn-primary full"
+   onclick="submitAuth()">
+   متابعة
+  </button>
+
+ </div>
+
+</div>
+
+
+<!-- ================= LOADING ================= -->
+
+<div
+ id="loading"
+ class="loading hidden">
+ جاري التحميل...
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+/* =================================================
+   SUPABASE
+================================================= */
+
+const SUPABASE_URL =
+ "https://lednqgmvjcykvlmnaegz.supabase.co";
+
+const SUPABASE_KEY =
+ "sb_publishable_vUaQslJsVIop_CxGruHWKw_-yUKZBkq";
+
+const STORAGE_BUCKET =
+ "platform-content";
+
+const SUPERVISOR_EMAIL = "lama123456710@gmail.com";
+
+const db =
+ supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+ );
+
+
+/* =================================================
+   STATE
+================================================= */
+
+let currentUser = null;
+let currentProfile = null;
+
+let subjects = [];
+let sections = [];
+let contents = [];
+
+let currentSubject = null;
+let currentSection = null;
+
+let currentContentType = "video";
+
+let hasSubscription = false;
+
+
+/* =================================================
+   HELPERS
+================================================= */
+
+function showLoading(){
+
+ const el =
+  document.getElementById("loading");
+
+ if(el)
+  el.classList.remove("hidden");
+
+}
+
+
+function hideLoading(){
+
+ const el =
+  document.getElementById("loading");
+
+ if(el)
+  el.classList.add("hidden");
+
+}
+
+
+function escapeHTML(value){
+
+ if(value == null)
+  return "";
+
+ return String(value)
+  .replaceAll("&","&amp;")
+  .replaceAll("<","&lt;")
+  .replaceAll(">","&gt;")
+  .replaceAll('"',"&quot;")
+  .replaceAll("'","&#039;");
+
+}
+
+
+function isAdmin(){
+
+ return !!(
+  currentProfile?.role === "admin" ||
+  currentUser?.email?.toLowerCase() ===
+   SUPERVISOR_EMAIL.toLowerCase()
+ );
+
+}
+
+
+/* =================================================
+   AUTH
+================================================= */
+
+let authMode = "login";
+
+
+function openAuth(
+ mode="login",
+ message=""
+){
+
+ authMode = mode;
+
+ document
+  .getElementById("authModal")
+  .classList.remove("hidden");
+
+ switchAuth(mode);
+
+ const box =
+  document.getElementById("authMessage");
+
+ if(message){
+
+  box.textContent = message;
+  box.classList.remove("hidden");
+
+ }else{
+
+  box.classList.add("hidden");
+
+ }
+
+}
+
+
+function closeAuth(){
+
+ document
+  .getElementById("authModal")
+  .classList.add("hidden");
+
+}
+
+
+function switchAuth(mode){
+
+ authMode = mode;
+
+ const loginTab =
+  document.getElementById("loginTab");
+
+ const signupTab =
+  document.getElementById("signupTab");
+
+ const signupFields =
+  document.getElementById("signupFields");
+
+ const title =
+  document.getElementById("authTitle");
+
+
+ if(mode === "login"){
+
+  loginTab.classList.add("active");
+  signupTab.classList.remove("active");
+
+  signupFields.classList.add("hidden");
+
+  title.textContent =
+   "تسجيل الدخول";
+
+ }else{
+
+  signupTab.classList.add("active");
+  loginTab.classList.remove("active");
+
+  signupFields.classList.remove("hidden");
+
+  title.textContent =
+   "إنشاء حساب";
+
+ }
+
+}
+
+
+/* =================================================
+   LOGIN / SIGNUP
+================================================= */
+
+async function submitAuth(){
+
+ const email =
+  document
+   .getElementById("authEmail")
+   .value
+   .trim();
+
+ const password =
+  document
+   .getElementById("authPassword")
+   .value;
+
+
+ if(!email || !password){
+
+  alert(
+   "اكتبي البريد الإلكتروني وكلمة المرور."
+  );
+
+  return;
+
+ }
+
+
+ showLoading();
+
+
+ try{
+
+  if(authMode === "signup"){
+
+   const firstName =
+    document
+     .getElementById("firstName")
+     .value
+     .trim();
+
+   const familyName =
+    document
+     .getElementById("familyName")
+     .value
+     .trim();
+
+
+   if(!firstName || !familyName){
+
+    hideLoading();
+
+    alert(
+     "اكتبي الاسم الأول واسم العائلة."
+    );
+
+    return;
+
+   }
+
+
+   const {
+    data,
+    error
+   } =
+    await db.auth.signUp({
+
+     email,
+     password,
+
+     options:{
+      data:{
+       first_name:firstName,
+       family_name:familyName
+      }
+     }
+
+    });
+
+
+   if(error)
+    throw error;
+
+
+   if(data.session){
+
+    closeAuth();
+
+    await loadApp();
+
+   }else{
+
+    hideLoading();
+
+    alert(
+     "تم إنشاء الحساب. إذا طلب منك تأكيد البريد، أكدي بريدك ثم سجلي الدخول."
+    );
+
+   }
+
+
+  }else{
+
+ const {
+  data,
+  error
+ } = await db.auth.signInWithPassword({
+  email: email.trim(),
+  password
+ });
+
+ if(error){
+
+  if(error.message.toLowerCase().includes("email not confirmed")){
+   throw new Error("يجب تأكيد البريد الإلكتروني أولًا.");
+  }
+
+  throw error;
+ }
+
+ closeAuth();
+
+ await loadApp();
+
+}
+
+
+ }catch(error){
+
+  console.error(error);
+
+  hideLoading();
+
+  alert(
+   "حدث خطأ:\n\n" +
+   (error.message || "تعذر إكمال العملية")
+  );
+
+ }
+
+}
+
+
+/* =================================================
+   LOAD APP
+================================================= */
+
+async function loadApp(){
+
+ showLoading();
+
+ try{
+
+  const {
+   data:{session},
+   error:sessionError
+  } =
+   await db.auth.getSession();
+
+
+  if(sessionError)
+   throw sessionError;
+
+
+  currentUser =
+   session?.user || null;
+
+
+  /* =========================================
+     زائر بدون تسجيل دخول
+  ========================================= */
+
+  if(!currentUser){
+
+   currentProfile = null;
+   hasSubscription = false;
+
+   await loadData();
+
+
+   document
+    .getElementById("landing")
+    .classList.add("hidden");
+
+
+   document
+    .getElementById("app")
+    .classList.remove("hidden");
+
+
+   updateGuestUI();
+
+   hideLoading();
+
+   return;
+
+  }
+
+
+  /* =========================================
+     المستخدم المسجل
+  ========================================= */
+
+  let {
+   data:profile,
+   error:profileError
+  } =
+   await db
+    .from("profiles")
+    .select("*")
+    .eq("id",currentUser.id)
+    .maybeSingle();
+
+
+  /*
+    حساب المشرفة يبقى منفصلًا.
+    حتى لو حدث خطأ في تحميل profile،
+    بريد المشرفة نفسه يحدد الواجهة كمشرفة.
+  */
+
+  if(
+   profileError &&
+   currentUser.email?.toLowerCase() !==
+   SUPERVISOR_EMAIL.toLowerCase()
+  ){
+
+   throw new Error(
+    "تعذر تحميل بيانات الحساب: " +
+    profileError.message
+   );
+
+  }
+
+
+  if(!profile){
+
+   if(
+    currentUser.email?.toLowerCase() ===
+    SUPERVISOR_EMAIL.toLowerCase()
+   ){
+
+    profile = {
+
+     id:currentUser.id,
+
+     first_name:"مشرفة",
+
+     family_name:"",
+
+     email:currentUser.email,
+
+     role:"admin"
+
+    };
+
+   }else{
+
+    const metadata =
+     currentUser.user_metadata || {};
+
+
+    const {
+     data:newProfile,
+     error:createError
+    } =
+     await db
+      .from("profiles")
+      .insert({
+
+       id:currentUser.id,
+
+       first_name:
+        metadata.first_name || "",
+
+       family_name:
+        metadata.family_name || "",
+
+       email:
+        currentUser.email || "",
+
+       role:"student"
+
+      })
+      .select("*")
+      .single();
+
+
+    if(createError)
+     throw createError;
+
+
+    profile = newProfile;
+
+   }
+
+  }
+
+
+  /*
+    لا نغير حساب المشرفة في قاعدة البيانات.
+    فقط نتأكد أن الواجهة تتعامل معه كمشرفة.
+  */
+
+  if(
+   currentUser.email?.toLowerCase() ===
+   SUPERVISOR_EMAIL.toLowerCase()
+  ){
+
+   profile.role = "admin";
+
+  }
+
+
+  currentProfile = profile;
+
+
+  await loadData();
+
+
+  document
+   .getElementById("landing")
+   .classList.add("hidden");
+
+
+  document
+   .getElementById("app")
+   .classList.remove("hidden");
+
+
+  updateUserUI();
+
+
+  hideLoading();
+
+
+ }catch(error){
+
+  console.error(error);
+
+  hideLoading();
+
+  alert(
+   error.message ||
+   "تعذر تحميل المنصة."
+  );
+
+ }
+
+}
+function updateGuestUI(){
+
+ document.getElementById("sideUserName").textContent = "زائر";
+
+ document.getElementById("sideUserEmail").textContent =
+  "تصفحي المحتوى المجاني";
+
+ document.getElementById("loginSideBtn")
+  .classList.remove("hidden");
+
+ document.getElementById("logoutBtn")
+  .classList.add("hidden");
+
+ document.getElementById("gradesBtn")
+  .classList.add("hidden");
+
+ document.getElementById("adminBtn")
+  .classList.add("hidden");
+
+}
+
+async function loadData(){
+
+ const [
+  subjectsResult,
+  sectionsResult,
+  contentsResult
+ ] =
+  await Promise.all([
+
+   db
+    .from("subjects")
+    .select("*")
+    .order("sort_order"),
+
+   db
+    .from("sections")
+    .select("*")
+    .order("sort_order"),
+
+   db
+    .from("contents")
+    .select("*")
+    .order("created_at")
+
+  ]);
+
+
+ if(subjectsResult.error)
+  throw subjectsResult.error;
+
+ if(sectionsResult.error)
+  throw sectionsResult.error;
+
+ if(contentsResult.error)
+  throw contentsResult.error;
+
+
+ subjects =
+  subjectsResult.data || [];
+
+ sections =
+  sectionsResult.data || [];
+
+ contents =
+  contentsResult.data || [];
+
+
+ /* =========================================
+    SUBSCRIPTION
+ ========================================= */
+
+ hasSubscription = false;
+
+
+ /*
+   الزائر لا نطلب منه subscriptions
+   حتى لا يحصل Permission denied.
+ */
+
+ if(currentUser){
+
+  const {
+   data:subs,
+   error:subError
+  } =
+   await db
+    .from("subscriptions")
+    .select("*")
+    .eq("user_id",currentUser.id)
+    .eq("status","active")
+    .order(
+     "expires_at",
+     {ascending:false}
+    )
+    .limit(1);
+
+
+  if(subError){
+
+   console.warn(
+    "Subscription:",
+    subError
+   );
+
+  }else if(subs?.length){
+
+   hasSubscription =
+    !subs[0].expires_at ||
+    new Date(subs[0].expires_at) >
+     new Date();
+
+  }
+
+ }
+
+
+ renderApp();
+
+}
+
+
+/* =================================================
+   BROWSE
+================================================= */
+
+async function browsePlatform(){
+ await loadApp();
+}
+
+
+/* =================================================
+   USER UI
+================================================= */
+
+function updateUserUI(){
+
+ if(!currentProfile)
+  return;
+
+
+ let name;
+
+
+ if(isAdmin()){
+
+  name = "مشرفة";
+
+ }else{
+
+  name =
+   `${currentProfile.first_name || ""} ${currentProfile.family_name || ""}`
+    .trim() || "الطالب";
+
+ }
+
+
+ document
+  .getElementById("sideUserName")
+  .textContent = name;
+
+
+ document
+  .getElementById("sideUserEmail")
+  .textContent =
+   currentUser?.email || "";
+
+
+ document
+  .getElementById("loginSideBtn")
+  .classList.add("hidden");
+
+
+ document
+  .getElementById("logoutBtn")
+  .classList.remove("hidden");
+
+
+ document
+  .getElementById("gradesBtn")
+  .classList.remove("hidden");
+
+
+ if(isAdmin()){
+
+  document
+   .getElementById("adminBtn")
+   .classList.remove("hidden");
+
+ }else{
+
+  document
+   .getElementById("adminBtn")
+   .classList.add("hidden");
+
+ }
+
+
+ const sub =
+  document.getElementById(
+   "subscriptionStatus"
+  );
+
+
+ if(isAdmin()){
+
+  sub.textContent =
+   "👩🏻‍💼 مشرفة";
+
+  sub.classList.add("active");
+
+ }else if(hasSubscription){
+
+  sub.textContent =
+   "✓ اشتراك فعال";
+
+  sub.classList.add("active");
+
+ }else{
+
+  sub.textContent =
+   "تصفح مجاني";
+
+  sub.classList.remove("active");
+
+ }
+
+}
+
+
+/* =================================================
+   APP
+================================================= */
+
+function renderApp(){
+
+ renderSubjects();
+
+
+ if(
+  !currentSubject ||
+  !subjects.some(
+   s=>s.id === currentSubject.id
+  )
+ ){
+
+  currentSubject =
+   subjects[0] || null;
+
+ }
+
+
+ if(currentSubject){
+
+  renderSubjects();
+  renderSections();
+
+ }
+
+}
+
+
+/* =================================================
+   SUBJECTS
+================================================= */
+
+function renderSubjects(){
+
+ const container =
+  document.getElementById(
+   "subjectsList"
+  );
+
+
+ if(!container)
+  return;
+
+
+ container.innerHTML = "";
+
+
+ subjects.forEach(subject=>{
+
+  const button =
+   document.createElement("button");
+
+
+  button.className =
+   "subject-btn" +
+   (
+    currentSubject &&
+    currentSubject.id === subject.id
+     ? " active"
+     : ""
+   );
+
+
+  button.innerHTML =
+   `${escapeHTML(subject.icon || "🧬")}
+    ${escapeHTML(subject.name_ar)}`;
+
+
+  button.onclick =
+   ()=>selectSubject(subject.id);
+
+
+  container.appendChild(button);
+
+ });
+
+}
+
+
+/* =================================================
+   SECTIONS
+================================================= */
+
+function selectSubject(id){
+
+ currentSubject =
+  subjects.find(
+   s=>s.id == id
+  );
+
+
+ currentSection = null;
+
+
+ renderSubjects();
+ renderSections();
+
+}
+
+
+function sectionIsFree(section){
+
+ return (
+  section.is_free === true ||
+  section.name_ar ===
+   "تجميعات الميد الأول"
+ );
+
+}
+
+
+function canAccess(section){
+
+ if(sectionIsFree(section))
+  return true;
+
+
+ if(!currentUser)
+  return false;
+
+
+ if(isAdmin())
+  return true;
+
+
+ return hasSubscription;
+
+}
+
+
+function getSectionCover(sectionId){
+
+ const images =
+  contents.filter(c=>
+   c.section_id == sectionId &&
+   c.subject_id ==
+    currentSubject?.id &&
+   c.content_type === "image"
+  );
+
+
+ if(!images.length)
+  return null;
+
+
+ /*
+   إذا كان عنوان الصورة يحتوي "غلاف"
+   تصبح هي صورة بطاقة القسم.
+   وإلا نستخدم أول صورة.
+ */
+
+ return (
+  images.find(c=>
+   /غلاف|cover/i.test(
+    c.title_ar || ""
+   )
+  ) ||
+  images[0]
+ );
+
+}
+
+
+/* =================================================
+   SECTION SIGNED URL
+================================================= */
+
+async function getContentUrl(content){
+
+ if(!content)
+  return null;
+
+
+ if(
+  content.content_url &&
+  /^https?:\/\//i.test(
+   content.content_url
+  )
+ ){
+
+  return content.content_url;
+
+ }
+
+
+ const path =
+  content.content_url;
+
+
+ if(!path)
+  return null;
+
+
+ const bucket =
+  content.storage_bucket ||
+  STORAGE_BUCKET;
+
+
+ const {
+  data,
+  error
+ } =
+  await db
+   .storage
+   .from(bucket)
+   .createSignedUrl(
+    path,
+    60 * 60
+   );
+
+
+ if(error)
+  throw error;
+
+
+ return data?.signedUrl || null;
+
+}
+
+
+/* =================================================
+   RENDER SECTIONS
+================================================= */
+
+function renderSections(){
+
+ const area =
+  document.getElementById(
+   "sectionsArea"
+  );
+
+
+ if(!area)
+  return;
+
+
+ if(!currentSubject){
+
+  area.innerHTML =
+   "<p>اختاري مادة.</p>";
+
+  return;
+
+ }
+
+
+ area.innerHTML = `
+
+  <div class="subject-hero">
+
+   <h1>
+    ${escapeHTML(currentSubject.icon || "🧬")}
+    ${escapeHTML(currentSubject.name_ar)}
+   </h1>
+
+   <p>
+    اختاري التجميعات التي تريدين الوصول إليها.
+   </p>
+
+  </div>
+
+
+  <div class="section-grid">
+
+   ${sections.map(section=>{
+
+    const free =
+     sectionIsFree(section);
+
+    const cover =
+     getSectionCover(section.id);
+
+
+    return `
+
+     <div
+      class="section-card"
+      onclick="openSection(${section.id})">
+
+      ${
+       cover
+        ? `
+         <div
+          class="section-cover"
+          id="cover-${section.id}">
+          جاري تحميل الصورة...
+         </div>
+        `
+        : `
+         <div class="section-icon">
+          ${escapeHTML(
+           section.icon || "📚"
+          )}
+         </div>
+        `
+      }
+
+
+      <h3>
+       ${escapeHTML(section.name_ar)}
+      </h3>
+
+
+      <p>
+
+       ${
+        free
+         ? `
+          <span class="free">
+           ✓ مجاني
+          </span>
+         `
+         : `
+          <span class="locked">
+           🔒 يحتاج اشتراك
+          </span>
+         `
+       }
+
+      </p>
+
+     </div>
+
+    `;
+
+   }).join("")}
+
+  </div>
+
+ `;
+
+
+ loadSectionCovers();
+
+}
+
+
+/* =================================================
+   LOAD SECTION COVERS
+================================================= */
+
+async function loadSectionCovers(){
+
+ for(const section of sections){
+
+  const cover =
+   getSectionCover(section.id);
+
+
+  if(!cover)
+   continue;
+
+
+  const box =
+   document.getElementById(
+    `cover-${section.id}`
+   );
+
+
+  if(!box)
+   continue;
+
+
+  try{
+
+   const url =
+    await getContentUrl(cover);
+
+
+   if(url){
+
+    box.innerHTML = `
+     <img
+      src="${escapeHTML(url)}"
+      alt="${escapeHTML(
+       section.name_ar
+      )}"
+      style="
+       width:100%;
+       height:150px;
+       object-fit:cover;
+       border-radius:12px;
+      "
+     >
+    `;
+
+   }else{
+
+    box.innerHTML =
+     escapeHTML(
+      section.icon || "📚"
+     );
+
+   }
+
+  }catch(error){
+
+   console.warn(
+    "Cover error:",
+    error
+   );
+
+   box.innerHTML =
+    escapeHTML(
+     section.icon || "📚"
+    );
+
+  }
+
+ }
+
+}
+
+
+/* =================================================
+   OPEN SECTION
+================================================= */
+
+function openSection(sectionId){
+
+ const section =
+  sections.find(
+   s=>s.id == sectionId
+  );
+
+
+ if(!section)
+  return;
+
+
+ if(!canAccess(section)){
+
+  if(!currentUser){
+
+   openAuth(
+    "login",
+    "هذا القسم يحتاج تسجيل الدخول والاشتراك."
+   );
+
+  }else{
+
+   alert(
+    "هذا القسم يحتاج إلى اشتراك فعال."
+   );
+
+  }
+
+  return;
+
+ }
+
+
+ currentSection =
+  section;
+
+
+ currentContentType =
+  "video";
+
+
+ renderContent();
+
+}
+
+
+/* =================================================
+   CONTENT
+================================================= */
+
+async function renderContent(){
+
+ const area =
+  document.getElementById(
+   "sectionsArea"
+  );
+
+
+ if(!area ||
+    !currentSection ||
+    !currentSubject)
+  return;
+
+
+ const sectionContents =
+  contents.filter(c=>
+   c.section_id ==
+    currentSection.id &&
+   c.subject_id ==
+    currentSubject.id
+  );
+
+
+ area.innerHTML = `
+
+  <button
+   class="btn btn-outline"
+   onclick="renderSections()">
+   ← الرجوع للأقسام
+  </button>
+
+
+  <div class="content-panel">
+
+   <h2>
+
+    ${escapeHTML(
+     currentSection.icon || "📚"
+    )}
+
+    ${escapeHTML(
+     currentSection.name_ar
+    )}
+
+   </h2>
+
+
+   <div class="tabs">
+
+    <button
+     class="tab ${
+      currentContentType === "video"
+       ? "active"
+       : ""
+     }"
+     onclick="setContentType('video')">
+     🎥 شروحات
+    </button>
+
+
+    <button
+     class="tab ${
+      currentContentType === "quiz"
+       ? "active"
+       : ""
+     }"
+     onclick="setContentType('quiz')">
+     🧠 اختبارات
+    </button>
+
+
+    <button
+     class="tab ${
+      currentContentType === "image"
+       ? "active"
+       : ""
+     }"
+     onclick="setContentType('image')">
+     🖼️ صور
+    </button>
+
+
+    <button
+     class="tab ${
+      currentContentType === "summary"
+       ? "active"
+       : ""
+     }"
+     onclick="setContentType('summary')">
+     📄 ملخصات
+    </button>
+
+   </div>
+
+
+   <div id="contentList">
+    جاري تحميل المحتوى...
+   </div>
+
+  </div>
+
+ `;
+
+
+ const list =
+  document.getElementById(
+   "contentList"
+  );
+
+
+ const filtered =
+  sectionContents.filter(
+   c =>
+    c.content_type ===
+    currentContentType
+  );
+
+
+ if(!filtered.length){
+
+  list.innerHTML = `
+
+   <div
+    style="
+     padding:25px;
+     text-align:center;
+     color:#777
+    ">
+
+    لا يوجد محتوى من هذا النوع حاليًا.
+
+   </div>
+
+  `;
+
+  return;
+
+ }
+
+
+ for(const content of filtered){
+
+  const html =
+   await renderSingleContent(
+    content
+   );
+
+
+  list.insertAdjacentHTML(
+   "beforeend",
+   html
+  );
+
+ }
+
+}
+
+
+/* =================================================
+   SINGLE CONTENT
+================================================= */
+
+async function renderSingleContent(content){
+
+ let mediaHTML = "";
+
+
+ if(
+  content.content_type ===
+  "video"
+ ){
+
+  try{
+
+   const url =
+    await getContentUrl(
+     content
+    );
+
+
+   if(url){
+
+    mediaHTML = `
+
+     <div class="media-box">
+
+      <video
+       controls
+       playsinline
+       preload="metadata"
+       src="${escapeHTML(url)}">
+      </video>
+
+     </div>
+
+    `;
+
+   }
+
+  }catch(error){
+
+   mediaHTML = `
+    <div class="file-note">
+     تعذر تحميل الفيديو.
+    </div>
+   `;
+
+  }
+
+ }
+
+
+ else if(
+  content.content_type ===
+  "image"
+ ){
+
+  try{
+
+   const url =
+    await getContentUrl(
+     content
+    );
+
+
+   if(url){
+
+    mediaHTML = `
+
+     <div class="media-box">
+
+      <img
+       src="${escapeHTML(url)}"
+       alt="${escapeHTML(
+        content.title_ar
+       )}">
+
+     </div>
+
+    `;
+
+   }
+
+  }catch(error){
+
+   mediaHTML = `
+    <div class="file-note">
+     تعذر تحميل الصورة.
+    </div>
+   `;
+
+  }
+
+ }
+
+
+ else if(
+  content.content_type ===
+  "summary"
+ ){
+
+  try{
+
+   const url =
+    await getContentUrl(
+     content
+    );
+
+
+   if(url){
+
+    const path =
+     content.content_url ||
+     "";
+
+
+    if(
+     /\.pdf($|\?)/i.test(path)
+    ){
+
+     mediaHTML = `
+
+      <div class="media-box">
+
+       <iframe
+        src="${escapeHTML(url)}"
+        style="
+         width:100%;
+         height:600px;
+         border:0;
+         border-radius:12px;
+        ">
+       </iframe>
+
+      </div>
+
+     `;
+
+    }else{
+
+     mediaHTML = `
+
+      <div style="margin-top:12px">
+
+       <a
+        href="${escapeHTML(url)}"
+        target="_blank"
+        class="btn btn-outline">
+
+        📄 فتح / تحميل الملخص
+
+       </a>
+
+      </div>
+
+     `;
+
+    }
+
+   }
+
+  }catch(error){
+
+   mediaHTML = `
+    <div class="file-note">
+     تعذر تحميل الملخص.
+    </div>
+   `;
+
+  }
+
+ }
+
+
+ else if(
+  content.content_type ===
+  "quiz"
+ ){
+
+  mediaHTML =
+   renderQuiz(content);
+
+ }
+
+
+ const progress =
+  await getProgress(
+   content.id
+  );
+
+
+ return `
+
+  <div
+   class="content-item"
+   style="
+    display:block;
+    margin-bottom:18px;
+   ">
+
+   <div
+    style="
+     display:flex;
+     justify-content:space-between;
+     gap:15px;
+     align-items:flex-start;
+    ">
+
+    <div>
+
+     <div class="content-title">
+
+      ${escapeHTML(
+       content.title_ar
+      )}
+
+     </div>
+
+     <div class="content-desc">
+
+      ${escapeHTML(
+       content.description_ar || ""
+      )}
+
+     </div>
+
+    </div>
+
+
+    <button
+     id="complete-${content.id}"
+     class="complete-btn ${
+      progress?.completed
+       ? "done"
+       : ""
+     }"
+     onclick="toggleComplete(${content.id})">
+
+     ${
+      progress?.completed
+       ? "✓ تمت المراجعة"
+       : "✓ تمت المراجعة"
+     }
+
+    </button>
+
+   </div>
+
+
+   ${mediaHTML}
+
+  </div>
+
+ `;
+
+}
+
+
+/* =================================================
+   PROGRESS
+================================================= */
+
+async function getProgress(contentId){
+
+ if(!currentUser)
+  return null;
+
+
+ const {
+  data,
+  error
+ } =
+  await db
+   .from("student_progress")
+   .select("*")
+   .eq(
+    "user_id",
+    currentUser.id
+   )
+   .eq(
+    "content_id",
+    contentId
+   )
+   .maybeSingle();
+
+
+ if(error){
+
+  console.warn(
+   "Progress:",
+   error
+  );
+
+  return null;
+
+ }
+
+
+ return data;
+
+}
+
+
+async function toggleComplete(contentId){
+
+ if(!currentUser){
+
+  openAuth(
+   "login",
+   "سجلي الدخول حتى يتم حفظ تقدمك."
+  );
+
+  return;
+
+ }
+
+
+ const existing =
+  await getProgress(
+   contentId
+  );
+
+
+ if(existing){
+
+  const newCompleted =
+   !existing.completed;
+
+
+  const {
+   error
+  } =
+   await db
+    .from("student_progress")
+    .update({
+
+     completed:
+      newCompleted,
+
+     progress:
+      newCompleted
+       ? 100
+       : 0,
+
+     last_viewed_at:
+      new Date().toISOString()
+
+    })
+    .eq(
+     "id",
+     existing.id
+    );
+
+
+  if(error){
+
+   alert(error.message);
+   return;
+
+  }
+
+ }else{
+
+
+  const {
+   error
+  } =
+   await db
+    .from("student_progress")
+    .insert({
+
+     user_id:
+      currentUser.id,
+
+     content_id:
+      contentId,
+
+     completed:true,
+
+     progress:100,
+
+     last_viewed_at:
+      new Date().toISOString()
+
+    });
+
+
+  if(error){
+
+   alert(error.message);
+   return;
+
+  }
+
+ }
+
+
+ renderContent();
+
+}
+
+
+/* =================================================
+   QUIZ RENDER
+================================================= */
+
+function renderQuiz(content){
+
+ const data =
+  content.quiz_data;
+
+
+ if(
+  !data ||
+  !Array.isArray(data.questions) ||
+  !data.questions.length
+ ){
+
+  return `
+   <div class="file-note">
+    هذا الاختبار لا يحتوي على أسئلة حاليًا.
+   </div>
+  `;
+
+ }
+
+
+ return `
+
+  <div class="quiz-box">
+
+   <form
+    id="quiz-form-${content.id}">
+
+    ${data.questions.map(
+     (q,index)=>`
+
+      <div class="quiz-question">
+
+       <div class="quiz-question-title">
+
+        ${index+1}.
+        ${escapeHTML(
+         q.question
+        )}
+
+       </div>
+
+
+       ${
+        (q.options || [])
+         .map(
+          (option,optIndex)=>`
+
+           <label class="quiz-option">
+
+            <input
+             type="radio"
+             name="quiz-${content.id}-${index}"
+             value="${optIndex}">
+
+            ${escapeHTML(
+             option
+            )}
+
+           </label>
+
+          `
+         ).join("")
+       }
+
+      </div>
+
+     `
+    ).join("")}
+
+
+    <button
+     type="button"
+     class="btn btn-primary"
+     onclick="submitQuiz(${content.id})">
+
+     تصحيح الاختبار
+
+    </button>
+
+   </form>
+
+
+   <div
+    id="quiz-result-${content.id}">
+   </div>
+
+  </div>
+
+ `;
+
+}
+
+
+/* =================================================
+   SUBMIT QUIZ
+================================================= */
+
+async function submitQuiz(contentId){
+
+ if(!currentUser){
+
+  openAuth(
+   "login",
+   "سجلي الدخول حتى يتم حفظ نتيجة الاختبار."
+  );
+
+  return;
+
+ }
+
+
+ const content =
+  contents.find(
+   c=>c.id == contentId
+  );
+
+
+ if(!content ||
+    !content.quiz_data){
+
+  alert(
+   "تعذر العثور على بيانات الاختبار."
+  );
+
+  return;
+
+ }
+
+
+ const questions =
+  content.quiz_data.questions || [];
+
+
+ let score = 0;
+
+ const answers = [];
+
+
+ for(
+  let i=0;
+  i<questions.length;
+  i++
+ ){
+
+  const selected =
+   document.querySelector(
+    `input[name="quiz-${contentId}-${i}"]:checked`
+   );
+
+
+  if(!selected){
+
+   alert(
+    `أجيبي عن السؤال رقم ${i+1} أولًا.`
+   );
+
+   return;
+
+  }
+
+
+  const answer =
+   Number(selected.value);
+
+
+  answers.push(answer);
+
+
+  if(
+   answer ===
+   Number(
+    questions[i].correct
+   )
+  ){
+
+   score++;
+
+  }
+
+ }
+
+
+ const maxScore =
+  questions.length;
+
+
+ const percentage =
+  maxScore
+   ? (score / maxScore) * 100
+   : 0;
+
+
+ const {
+  error
+ } =
+  await db
+   .from("quiz_results")
+   .insert({
+
+    user_id:
+     currentUser.id,
+
+    content_id:
+     contentId,
+
+    score:
+     score,
+
+    max_score:
+     maxScore,
+
+    percentage:
+     percentage,
+
+    answers:
+     answers
+
+   });
+
+
+ if(error){
+
+  alert(
+   "تعذر حفظ نتيجة الاختبار:\n" +
+   error.message
+  );
+
+  return;
+
+ }
+
+
+ const resultBox =
+  document.getElementById(
+   `quiz-result-${contentId}`
+  );
+
+
+ if(resultBox){
+
+  resultBox.innerHTML = `
+
+   <div class="quiz-result">
+
+    🎉 نتيجتك:
+
+    <br>
+
+    ${score} / ${maxScore}
+
+    <br>
+
+    ${percentage.toFixed(1)}%
+
+   </div>
+
+  `;
+
+ }
+
+
+ /* تحديث التقدم */
+
+ try{
+
+  await saveQuizProgress(
+   contentId
+  );
+
+ }catch(error){
+
+  console.warn(
+   "Quiz progress:",
+   error
+  );
+
+ }
+
+}
+
+
+async function saveQuizProgress(
+ contentId
+){
+
+ const existing =
+  await getProgress(
+   contentId
+  );
+
+
+ if(existing){
+
+  await db
+   .from("student_progress")
+   .update({
+
+    completed:true,
+
+    progress:100,
+
+    last_viewed_at:
+     new Date().toISOString()
+
+   })
+   .eq(
+    "id",
+    existing.id
+   );
+
+ }else{
+
+  await db
+   .from("student_progress")
+   .insert({
+
+    user_id:
+     currentUser.id,
+
+    content_id:
+     contentId,
+
+    completed:true,
+
+    progress:100,
+
+    last_viewed_at:
+     new Date().toISOString()
+
+   });
+
+ }
+
+}
+
+
+/* =================================================
+   STUDENT GRADES
+================================================= */
+
+async function showGrades(){
+
+ if(!currentUser){
+
+  openAuth("login");
+  return;
+
+ }
+
+
+ const [
+  gradesResult,
+  quizResult
+ ] =
+  await Promise.all([
+
+   db
+    .from("exam_grades")
+    .select("*")
+    .eq(
+     "user_id",
+     currentUser.id
+    )
+    .order("created_at"),
+
+   db
+    .from("quiz_results")
+    .select("*")
+    .eq(
+     "user_id",
+     currentUser.id
+    )
+    .order(
+     "created_at",
+     {ascending:false}
+    )
+
+  ]);
+
+
+ if(gradesResult.error){
+
+  alert(
+   gradesResult.error.message
+  );
+
+  return;
+
+ }
+
+
+ const grades =
+  gradesResult.data || [];
+
+
+ const quizResults =
+  quizResult.data || [];
+
+
+ const average =
+  grades.length
+   ? grades.reduce(
+      (sum,g)=>
+       sum +
+       Number(
+        g.percentage || 0
+       ),
+      0
+     ) / grades.length
+   : 0;
+
+
+ const area =
+  document.getElementById(
+   "sectionsArea"
+  );
+
+
+ area.innerHTML = `
+
+  <div class="grade-box">
+
+   <button
+    class="btn btn-outline"
+    onclick="renderSections()">
+
+    ← المنصة
+
+   </button>
+
+
+   <h2>
+    📊 درجات الطلاب والتحليل الإحصائي
+   </h2>
+
+
+   <div class="grade-list">
+
+    <div class="grade-stat">
+
+     <strong>
+      ${grades.length}
+     </strong>
+
+     عدد الميدات
+
+    </div>
+
+
+    <div class="grade-stat">
+
+     <strong>
+      ${average.toFixed(1)}%
+     </strong>
+
+     متوسط الدرجات
+
+    </div>
+
+
+    <div class="grade-stat">
+
+     <strong>
+
+      ${
+       grades.length
+        ? Math.max(
+           ...grades.map(
+            g=>Number(
+             g.percentage || 0
+            )
+           )
+          ).toFixed(1)
+        : "0"
+      }%
+
+     </strong>
+
+     أعلى نسبة
+
+    </div>
+
+   </div>
+
+
+   <h3>
+    درجات الميدات
+   </h3>
+
+
+   ${
+    grades.length
+     ? grades.map(g=>`
+
+       <div class="grade-row">
+
+        <span>
+         ${escapeHTML(
+          g.exam_name_ar
+         )}
+        </span>
+
+        <strong>
+
+         ${g.grade} /
+         ${g.max_grade}
+
+         (
+         ${Number(
+          g.percentage || 0
+         ).toFixed(1)}%
+         )
+
+        </strong>
+
+       </div>
+
+      `).join("")
+     : `
+       <p style="color:#777">
+        لم تتم إضافة أي درجة بعد.
+       </p>
+      `
+   }
+
+
+   <div class="analysis">
+
+    <strong>
+     تحليل درجاتك:
+    </strong>
+
+    <br>
+
+    ${
+     !grades.length
+      ? "أضيفي درجاتك بعد كل ميد ليظهر التحليل."
+      : average >= 90
+       ? "درجاتك الحالية مرتفعة."
+       : average >= 75
+        ? "مستواك جيد، وراجعي الأقسام التي تحتاجين فيها إلى تحسين."
+        : "راجعي نقاط الضعف واستخدمي الاختبارات والتجميعات."
+    }
+
+   </div>
+
+
+   <h3 style="margin-top:30px">
+    🧠 نتائج الاختبارات القصيرة
+   </h3>
+
+
+   ${
+    quizResults.length
+     ? quizResults.map(result=>{
+
+        const content =
+         contents.find(
+          c=>
+           c.id ==
+           result.content_id
+         );
+
+
+        return `
+
+         <div
+          class="grade-row">
+
+          <span>
+
+           ${escapeHTML(
+            content?.title_ar ||
+            "اختبار"
+           )}
+
+          </span>
+
+          <strong>
+
+           ${result.score}
+           /
+           ${result.max_score}
+
+           (
+           ${Number(
+            result.percentage || 0
+           ).toFixed(1)}%
+           )
+
+          </strong>
+
+         </div>
+
+        `;
+
+       }).join("")
+     : `
+       <p style="color:#777">
+        لم تؤدي أي اختبار حتى الآن.
+       </p>
+      `
+   }
+
+
+   <button
+    class="btn btn-primary"
+    style="margin-top:20px"
+    onclick="openGradeForm()">
+
+    + إضافة درجة ميد
+
+   </button>
+
+
+  </div>
+
+ `;
+
+}
+
+
+/* =================================================
+   ADD EXAM GRADE
+================================================= */
+
+function openGradeForm(){
+
+ const name =
+  prompt(
+   "اكتبي اسم الميد، مثال: الميد الأول"
+  );
+
+
+ if(!name)
+  return;
+
+
+ const grade =
+  prompt(
+   "اكتبي درجتك، مثال: 18"
+  );
+
+
+ if(grade === null)
+  return;
+
+
+ const max =
+  prompt(
+   "اكتبي الدرجة الكاملة، مثال: 20"
+  );
+
+
+ if(max === null)
+  return;
+
+
+ saveGrade(
+  name,
+  Number(grade),
+  Number(max)
+ );
+
+}
+
+
+async function saveGrade(
+ name,
+ grade,
+ max
+){
+
+ if(
+  !name ||
+  !Number.isFinite(grade) ||
+  !Number.isFinite(max) ||
+  max <= 0 ||
+  grade < 0 ||
+  grade > max
+ ){
+
+  alert(
+   "تأكدي من الدرجات المدخلة."
+  );
+
+  return;
+
+ }
+
+
+ const percentage =
+  (grade / max) * 100;
+
+
+ const mid1Section =
+  sections.find(
+   s=>
+    s.name_ar ===
+    "تجميعات الميد الأول"
+  );
+
+
+ const {
+  error
+ } =
+  await db
+   .from("exam_grades")
+   .insert({
+
+    user_id:
+     currentUser.id,
+
+    section_id:
+     mid1Section?.id || null,
+
+    exam_name_ar:
+     name,
+
+    grade:
+     grade,
+
+    max_grade:
+     max,
+
+    percentage:
+     percentage
+
+   });
+
+
+ if(error){
+
+  alert(
+   error.message
+  );
+
+  return;
+
+ }
+
+
+ showGrades();
+
+}
+
+
+/* =================================================
+   ADMIN
+================================================= */
+
+async function showAdmin(){
+
+ if(
+  !currentUser ||
+  !isAdmin()
+ ){
+
+  alert(
+   "هذه الصفحة للمشرفة فقط."
+  );
+
+  return;
+
+ }
+
+
+ const area =
+  document.getElementById(
+   "sectionsArea"
+  );
+
+
+ area.innerHTML = `
+
+  <div
+   class="subject-hero">
+
+   <h1>
+    درجات الطلاب والتحليل الإحصائي
+   </h1>
+
+   <p>
+    إدارة المحتوى والاختبارات والاشتراكات
+    ومتابعة نتائج الطلاب.
+   </p>
+
+  </div>
+
+
+  <div class="admin-grid">
+
+
+   <!-- CONTENT -->
+
+   <div class="admin-card">
+
+    <h2>
+     ➕ إضافة محتوى
+    </h2>
+
+
+    <div class="file-note">
+
+     الفيديوهات والصور والملخصات يتم رفعها
+     مباشرة إلى Supabase Storage.
+     لا تحتاجين إلى وضع رابط خارجي.
+
+    </div>
+
+
+    <div class="field">
+
+     <label>
+      المادة
+     </label>
+
+     <select id="adminSubject">
+
+      ${subjects.map(s=>
+       `<option value="${s.id}">
+        ${escapeHTML(
+         s.name_ar
+        )}
+       </option>`
+      ).join("")}
+
+     </select>
+
+    </div>
+
+
+    <div class="field">
+
+     <label>
+      القسم
+     </label>
+
+     <select id="adminSection">
+
+      ${sections.map(s=>
+       `<option value="${s.id}">
+        ${escapeHTML(
+         s.name_ar
+        )}
+       </option>`
+      ).join("")}
+
+     </select>
+
+    </div>
+
+
+    <div class="field">
+
+     <label>
+      نوع المحتوى
+     </label>
+
+     <select
+      id="adminType"
+      onchange="toggleAdminType()">
+
+      <option value="video">
+       🎥 فيديو
+      </option>
+
+      <option value="quiz">
+       🧠 اختبار
+      </option>
+
+      <option value="image">
+       🖼️ صورة
+      </option>
+
+      <option value="summary">
+       📄 ملخص
+      </option>
+
+     </select>
+
+    </div>
+
+
+    <div class="field">
+
+     <label>
+      العنوان
+     </label>
+
+     <input
+      id="adminTitle"
+      placeholder="مثال: شرح الخلية">
+
+    </div>
+
+
+    <div class="field">
+
+     <label>
+      الوصف
+     </label>
+
+     <textarea
+      id="adminDescription"
+      placeholder="وصف مختصر للمحتوى">
+     </textarea>
+
+    </div>
+
+
+    <div
+     id="fileUploadArea">
+
+     <div class="field">
+
+      <label>
+       الملف
+      </label>
+
+      <input
+       id="adminFile"
+       type="file"
+       accept="video/*">
+
+     </div>
+
+     <div class="file-note">
+
+      للفيديو:
+      MP4 / WebM / وغيرها حسب دعم المتصفح.
+
+     </div>
+
+    </div>
+
+
+    <div
+     id="quizBuilder"
+     class="quiz-builder hidden">
+
+     <h3>
+      🧠 بناء الاختبار
+     </h3>
+
+     <div id="quizQuestions"></div>
+
+     <button
+      type="button"
+      class="add-question"
+      onclick="addQuizQuestion()">
+
+      + إضافة سؤال
+
+     </button>
+
+    </div>
+
+
+    <button
+     class="btn btn-primary full"
+     style="margin-top:15px"
+     onclick="addContent()">
+
+     إضافة المحتوى
+
+    </button>
+
+   </div>
+
+
+   <!-- SUBSCRIPTION -->
+
+   <div class="admin-card">
+
+    <h2>
+     💳 اشتراك طالب
+    </h2>
+
+
+    <div class="file-note">
+
+     استخدمي بريد الطالب المسجل في المنصة
+     لتفعيل الاشتراك.
+
+    </div>
+
+
+    <div class="field">
+
+     <label>
+      إيميل الطالب
+     </label>
+
+     <input
+      id="subEmail"
+      type="email">
+
+    </div>
+
+
+    <div class="field">
+
+     <label>
+      مدة الاشتراك بالأيام
+     </label>
+
+     <input
+      id="subDays"
+      type="number"
+      value="30">
+
+    </div>
+
+
+    <button
+     class="btn btn-primary full"
+     onclick="activateSubscription()">
+
+     تفعيل الاشتراك
+
+    </button>
+
+   </div>
+
+  </div>
+
+
+  <div
+   class="admin-card"
+   style="margin-top:20px">
+
+   <h2>
+    👥 الطلاب وتطورهم
+   </h2>
+
+   <div id="studentsArea">
+    جاري تحميل الطلاب...
+   </div>
+
+  </div>
+
+ `;
+
+
+ addQuizQuestion();
+
+ await loadStudentsAdmin();
+
+}
+
+
+/* =================================================
+   ADMIN TYPE
+================================================= */
+
+function toggleAdminType(){
+
+ const type =
+  document.getElementById(
+   "adminType"
+  ).value;
+
+
+ const fileArea =
+  document.getElementById(
+   "fileUploadArea"
+  );
+
+
+ const quizBuilder =
+  document.getElementById(
+   "quizBuilder"
+  );
+
+
+ const fileInput =
+  document.getElementById(
+   "adminFile"
+  );
+
+
+ if(type === "quiz"){
+
+  fileArea.classList.add(
+   "hidden"
+  );
+
+  quizBuilder.classList.remove(
+   "hidden"
+  );
+
+
+ }else{
+
+  fileArea.classList.remove(
+   "hidden"
+  );
+
+  quizBuilder.classList.add(
+   "hidden"
+  );
+
+
+  if(type === "video"){
+
+   fileInput.accept =
+    "video/*";
+
+  }else if(type === "image"){
+
+   fileInput.accept =
+    "image/*";
+
+  }else if(type === "summary"){
+
+   fileInput.accept =
+    ".pdf,.doc,.docx,.ppt,.pptx,.txt,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,text/plain";
+
+  }
+
+ }
+
+}
+
+
+/* =================================================
+   QUIZ BUILDER
+================================================= */
+
+let quizQuestionCounter = 0;
+
+
+function addQuizQuestion(){
+
+ const container =
+  document.getElementById(
+   "quizQuestions"
+  );
+
+
+ if(!container)
+  return;
+
+
+ quizQuestionCounter++;
+
+
+ const id =
+  quizQuestionCounter;
+
+
+ const html = `
+
+  <div
+   class="admin-question"
+   data-question="${id}">
+
+   <div class="admin-question-header">
+
+    <strong>
+     السؤال ${id}
+    </strong>
+
+    <button
+     type="button"
+     class="remove-question"
+     onclick="removeQuizQuestion(${id})">
+
+     حذف
+
+    </button>
+
+   </div>
+
+
+   <div class="field">
+
+    <label>
+     نص السؤال
+    </label>
+
+    <textarea
+     class="quiz-q-text"
+     placeholder="اكتبي السؤال هنا">
+    </textarea>
+
+   </div>
+
+
+   <div>
+
+    <label
+     style="
+      display:block;
+      font-size:13px;
+      font-weight:700;
+      margin-bottom:8px;
+     ">
+
+     الاختيارات
+     — حددي دائرة الإجابة الصحيحة
+
+    </label>
+
+
+    ${[0,1,2,3].map(i=>`
+
+     <div
+      class="correct-row">
+
+      <input
+       type="radio"
+       name="correct-${id}"
+       value="${i}"
+       ${i===0 ? "checked" : ""}>
+
+
+      <input
+       type="text"
+       class="quiz-option-text"
+       data-option="${i}"
+       placeholder="الاختيار ${i+1}">
+
+     </div>
+
+    `).join("")}
+
+   </div>
+
+  </div>
+
+ `;
+
+
+ container.insertAdjacentHTML(
+  "beforeend",
+  html
+ );
+
+}
+
+
+function removeQuizQuestion(id){
+
+ const el =
+  document.querySelector(
+   `.admin-question[data-question="${id}"]`
+  );
+
+
+ if(el)
+  el.remove();
+
+
+}
+
+
+/* =================================================
+   COLLECT QUIZ
+================================================= */
+
+function collectQuizData(){
+
+ const cards =
+  document.querySelectorAll(
+   ".admin-question"
+  );
+
+
+ if(!cards.length)
+  throw new Error(
+   "أضيفي سؤالًا واحدًا على الأقل."
+  );
+
+
+ const questions = [];
+
+
+ cards.forEach(
+  (card,index)=>{
+
+   const question =
+    card
+     .querySelector(
+      ".quiz-q-text"
+     )
+     .value
+     .trim();
+
+
+   const optionInputs =
+    card.querySelectorAll(
+     ".quiz-option-text"
+    );
+
+
+   const options =
+    Array.from(
+     optionInputs
+    ).map(
+     input=>
+      input.value.trim()
+    );
+
+
+   const correctInput =
+    card.querySelector(
+     'input[type="radio"]:checked'
+    );
+
+
+   if(!question){
+
+    throw new Error(
+     `اكتبي نص السؤال رقم ${index+1}.`
+    );
+
+   }
+
+
+   if(
+    options.some(
+     option=>!option
+    )
+   ){
+
+    throw new Error(
+     `أكملي جميع اختيارات السؤال رقم ${index+1}.`
+    );
+
+   }
+
+
+   if(!correctInput){
+
+    throw new Error(
+     `حددي الإجابة الصحيحة للسؤال رقم ${index+1}.`
+    );
+
+   }
+
+
+   questions.push({
+
+    question:
+     question,
+
+    options:
+     options,
+
+    correct:
+     Number(
+      correctInput.value
+     )
+
+   });
+
+  }
+ );
+
+
+ return {
+  questions
+ };
+
+}
+
+
+/* =================================================
+   STORAGE UPLOAD
+================================================= */
+
+function safeFileName(name){
+
+ return String(name)
+  .replace(
+   /[^\w\u0600-\u06FF.\- ]+/g,
+   "_"
+  )
+  .replace(
+   /\s+/g,
+   "_"
+  );
+
+}
+
+
+async function uploadFileToStorage(
+ file,
+ contentId
+){
+
+ if(!file)
+  throw new Error(
+   "اختاري ملفًا أولًا."
+  );
+
+
+ const safeName =
+  safeFileName(
+   file.name
+  );
+
+
+ const path =
+  `contents/${contentId}/${Date.now()}_${safeName}`;
+
+
+ const {
+  error
+ } =
+  await db
+   .storage
+   .from(STORAGE_BUCKET)
+   .upload(
+    path,
+    file,
+    {
+
+     cacheControl:
+      "3600",
+
+     upsert:
+      false,
+
+     contentType:
+      file.type ||
+      "application/octet-stream"
+
+    }
+   );
+
+
+ if(error)
+  throw error;
+
+
+ return path;
+
+}
+
+
+/* =================================================
+   ADD CONTENT
+================================================= */
+
+async function addContent(){
+
+ if(!isAdmin()){
+
+  alert(
+   "هذه العملية للمشرفة فقط."
+  );
+
+  return;
+
+ }
+
+
+ const subjectId =
+  Number(
+   document.getElementById(
+    "adminSubject"
+   ).value
+  );
+
+
+ const sectionId =
+  Number(
+   document.getElementById(
+    "adminSection"
+   ).value
+  );
+
+
+ const type =
+  document.getElementById(
+   "adminType"
+  ).value;
+
+
+ const title =
+  document.getElementById(
+   "adminTitle"
+  ).value.trim();
+
+
+ const description =
+  document.getElementById(
+   "adminDescription"
+  ).value.trim();
+
+
+ if(!title){
+
+  alert(
+   "اكتبي عنوان المحتوى."
+  );
+
+  return;
+
+ }
+
+
+ showLoading();
+
+
+ let contentId = null;
+ let uploadedPath = null;
+
+
+ try{
+
+  /* QUIZ */
+
+  if(type === "quiz"){
+
+   const quizData =
+    collectQuizData();
+
+
+   const {
+    data,
+    error
+   } =
+    await db
+     .from("contents")
+     .insert({
+
+      subject_id:
+       subjectId,
+
+      section_id:
+       sectionId,
+
+      content_type:
+       "quiz",
+
+      title_ar:
+       title,
+
+      description_ar:
+       description,
+
+      content_url:
+       null,
+
+      storage_bucket:
+       null,
+
+      quiz_data:
+       quizData
+
+     })
+     .select("id")
+     .single();
+
+
+   if(error)
+    throw error;
+
+
+   contentId =
+    data.id;
+
+
+  }
+
+
+  /* VIDEO / IMAGE / SUMMARY */
+
+  else{
+
+   const file =
+    document.getElementById(
+     "adminFile"
+    ).files[0];
+
+
+   if(!file){
+
+    throw new Error(
+     "اختاري الملف أولًا."
+    );
+
+   }
+
+
+   /*
+     ننشئ السجل أولًا حتى نحصل
+     على content_id لمسار Storage.
+   */
+
+   const {
+    data,
+    error
+   } =
+    await db
+     .from("contents")
+     .insert({
+
+      subject_id:
+       subjectId,
+
+      section_id:
+       sectionId,
+
+      content_type:
+       type,
+
+      title_ar:
+       title,
+
+      description_ar:
+       description,
+
+      content_url:
+       null,
+
+      storage_bucket:
+       STORAGE_BUCKET,
+
+      quiz_data:
+       null
+
+     })
+     .select("id")
+     .single();
+
+
+   if(error)
+    throw error;
+
+
+   contentId =
+    data.id;
+
+
+   uploadedPath =
+    await uploadFileToStorage(
+     file,
+     contentId
+    );
+
+
+   const {
+    error:updateError
+   } =
+    await db
+     .from("contents")
+     .update({
+
+      content_url:
+       uploadedPath,
+
+      storage_bucket:
+       STORAGE_BUCKET
+
+     })
+     .eq(
+      "id",
+      contentId
+     );
+
+
+   if(updateError)
+    throw updateError;
+
+  }
+
+
+  await loadData();
+
+
+  hideLoading();
+
+
+  alert(
+   type === "quiz"
+    ? "تم حفظ الاختبار بنجاح ✅"
+    : "تم رفع المحتوى وحفظه في Supabase Storage بنجاح ✅"
+  );
+
+
+  showAdmin();
+
+
+ }catch(error){
+
+  console.error(error);
+
+
+  /*
+    إذا فشل الرفع بعد إنشاء سجل المحتوى،
+    نحاول تنظيف السجل والملف.
+  */
+
+  if(uploadedPath){
+
+   try{
+
+    await db
+     .storage
+     .from(STORAGE_BUCKET)
+     .remove([
+      uploadedPath
+     ]);
+
+   }catch(cleanError){
+
+    console.warn(
+     cleanError
+    );
+
+   }
+
+  }
+
+
+  if(contentId){
+
+   try{
+
+    await db
+     .from("contents")
+     .delete()
+     .eq(
+      "id",
+      contentId
+     );
+
+   }catch(cleanError){
+
+    console.warn(
+     cleanError
+    );
+
+   }
+
+  }
+
+
+  hideLoading();
+
+
+  alert(
+   "تعذر إضافة المحتوى:\n\n" +
+   (
+    error.message ||
+    "خطأ غير معروف"
+   )
+  );
+
+ }
+
+}
+
+
+/* =================================================
+   SUBSCRIPTION
+================================================= */
+
+async function activateSubscription(){
+
+ if(!isAdmin()){
+
+  alert(
+   "هذه العملية للمشرفة فقط."
+  );
+
+  return;
+
+ }
+
+
+ const email =
+  document
+   .getElementById(
+    "subEmail"
+   )
+   .value
+   .trim();
+
+
+ const days =
+  Number(
+   document
+    .getElementById(
+     "subDays"
+    )
+    .value
+  );
+
+
+ if(!email || !days){
+
+  alert(
+   "أدخلي الإيميل والمدة."
+  );
+
+  return;
+
+ }
+
+
+ const {
+  data:profile,
+  error:profileError
+ } =
+  await db
+   .from("profiles")
+   .select("id,email,role")
+   .eq(
+    "email",
+    email
+   )
+   .maybeSingle();
+
+
+ if(profileError){
+
+  alert(
+   profileError.message
+  );
+
+  return;
+
+ }
+
+
+ if(!profile){
+
+  alert(
+   "لم يتم العثور على طالب بهذا البريد. يجب أن ينشئ حسابًا أولًا."
+  );
+
+  return;
+
+ }
+
+
+ const start =
+  new Date();
+
+
+ const expiry =
+  new Date();
+
+
+ expiry.setDate(
+  expiry.getDate() +
+  days
+ );
+
+
+ const {
+  error
+ } =
+  await db
+   .from("subscriptions")
+   .insert({
+
+    user_id:
+     profile.id,
+
+    status:
+     "active",
+
+    starts_at:
+     start.toISOString(),
+
+    expires_at:
+     expiry.toISOString()
+
+   });
+
+
+ if(error){
+
+  alert(
+   error.message
+  );
+
+  return;
+
+ }
+
+
+ alert(
+  "تم تفعيل الاشتراك للطالب حتى " +
+  expiry.toLocaleDateString(
+   "ar-SA"
+  )
+ );
+
+
+ await loadStudentsAdmin();
+
+}
+
+
+/* =================================================
+   ADMIN STUDENTS
+================================================= */
+
+async function loadStudentsAdmin(){
+
+ const area =
+  document.getElementById(
+   "studentsArea"
+  );
+
+
+ if(!area)
+  return;
+
+
+ const [
+  studentsResult,
+  progressResult,
+  gradesResult,
+  subsResult,
+  quizResultsResult
+ ] =
+  await Promise.all([
+
+   db
+    .from("profiles")
+    .select("*")
+    .eq(
+     "role",
+     "student"
+    )
+    .order(
+     "created_at",
+     {ascending:false}
+    ),
+
+   db
+    .from("student_progress")
+    .select("*"),
+
+   db
+    .from("exam_grades")
+    .select("*"),
+
+   db
+    .from("subscriptions")
+    .select("*"),
+
+   db
+    .from("quiz_results")
+    .select("*")
+    .order(
+     "created_at",
+     {ascending:false}
+    )
+
+  ]);
+
+
+ if(studentsResult.error){
+
+  area.innerHTML =
+   `<p>${escapeHTML(
+    studentsResult.error.message
+   )}</p>`;
+
+  return;
+
+ }
+
+
+ const students =
+  studentsResult.data || [];
+
+
+ const allProgress =
+  progressResult.data || [];
+
+
+ const allGrades =
+  gradesResult.data || [];
+
+
+ const allSubs =
+  subsResult.data || [];
+
+
+ const allQuizResults =
+  quizResultsResult.data || [];
+
+
+ if(!students.length){
+
+  area.innerHTML =
+   "<p>لا يوجد طلاب حتى الآن.</p>";
+
+  return;
+
+ }
+
+
+ area.innerHTML =
+  students.map(
+   student=>{
+
+
+    const progress =
+     allProgress.filter(
+      p=>
+       p.user_id ===
+       student.id
+     );
+
+
+    const completed =
+     progress.filter(
+      p=>p.completed
+     ).length;
+
+
+    const totalContents =
+     contents.length;
+
+
+    const percentage =
+     totalContents
+      ? (
+        completed /
+        totalContents
+       ) * 100
+      : 0;
+
+
+    const grades =
+     allGrades.filter(
+      g=>
+       g.user_id ===
+       student.id
+     );
+
+
+    const sub =
+     allSubs
+      .filter(
+       s=>
+        s.user_id ===
+        student.id &&
+        s.status ===
+        "active" &&
+        (
+         !s.expires_at ||
+         new Date(
+          s.expires_at
+         ) > new Date()
+        )
+      )
+      .sort(
+       (a,b)=>
+        new Date(
+         b.expires_at || 0
+        ) -
+        new Date(
+         a.expires_at || 0
+        )
+      )[0];
+
+
+    const quizResults =
+     allQuizResults.filter(
+      q=>
+       q.user_id ===
+       student.id
+     );
+
+
+    const avg =
+     grades.length
+      ? grades.reduce(
+         (sum,g)=>
+          sum +
+          Number(
+           g.percentage || 0
+          ),
+         0
+        ) / grades.length
+      : 0;
+
+
+    return `
+
+     <div class="student-card">
+
+
+      <div class="student-top">
+
+       <div>
+
+        <strong>
+
+         ${escapeHTML(
+          `${student.first_name || ""} ${student.family_name || ""}`
+         )}
+
+        </strong>
+
+
+        <div
+         style="
+          color:#777;
+          font-size:12px;
+         ">
+
+         ${escapeHTML(
+          student.email || ""
+         )}
+
+        </div>
+
+       </div>
+
+
+       <div>
+
+        ${
+         sub
+          ? `
+           <span class="free">
+            ✓ مشترك
+           </span>
+          `
+          : `
+           <span class="locked">
+            غير مشترك
+           </span>
+          `
+        }
+
+       </div>
+
+      </div>
+
+
+      <div
+       style="margin-top:15px">
+
+       نسبة إنجاز المحتوى:
+
+       <strong>
+        ${percentage.toFixed(1)}%
+       </strong>
+
+
+       <div class="progress">
+
+        <div
+         class="progress-bar"
+         style="
+          width:${Math.min(
+           percentage,
+           100
+          )}%;
+         ">
+        </div>
+
+       </div>
+
+
+       ${completed}
+       من
+       ${totalContents}
+       محتوى مكتمل
+
+      </div>
+
+
+      <!-- EXAM GRADES -->
+
+      <div class="analysis">
+
+       <strong>
+        📊 الدرجات:
+       </strong>
+
+
+       ${
+        grades.length
+
+         ? grades.map(
+            g=>`
+
+             <div
+              class="grade-row">
+
+              <span>
+
+               ${escapeHTML(
+                g.exam_name_ar
+               )}
+
+              </span>
+
+              <strong>
+
+               ${g.grade}
+               /
+               ${g.max_grade}
+
+               (
+               ${Number(
+                g.percentage || 0
+               ).toFixed(1)}%
+               )
+
+              </strong>
+
+             </div>
+
+            `
+           ).join("")
+
+         : `
+           <p>
+            لم يضف الطالب درجات بعد.
+           </p>
+          `
+       }
+
+
+       ${
+        grades.length
+         ? `
+          <p>
+
+           متوسط درجات الطالب:
+
+           <strong>
+            ${avg.toFixed(1)}%
+           </strong>
+
+          </p>
+         `
+         : ""
+       }
+
+      </div>
+
+
+      <!-- QUIZ RESULTS -->
+
+      <div
+       class="analysis">
+
+       <strong>
+        🧠 نتائج الاختبارات:
+       </strong>
+
+
+       ${
+        quizResults.length
+
+         ? quizResults.map(
+            result=>{
+
+             const quizContent =
+              contents.find(
+               c=>
+                c.id ==
+                result.content_id
+              );
+
+
+             return `
+
+              <div
+               class="admin-quiz-result">
+
+               <strong>
+
+                ${escapeHTML(
+                 quizContent?.title_ar ||
+                 "اختبار"
+                )}
+
+               </strong>
+
+               <br>
+
+               النتيجة:
+
+               ${result.score}
+               /
+               ${result.max_score}
+
+               — 
+
+               ${Number(
+                result.percentage || 0
+               ).toFixed(1)}%
+
+               <br>
+
+               <small
+                style="
+                 color:#777;
+                ">
+
+                ${result.created_at
+                 ? new Date(
+                    result.created_at
+                   ).toLocaleString(
+                    "ar-SA"
+                   )
+                 : ""
+                }
+
+               </small>
+
+              </div>
+
+             `;
+
+            }
+           ).join("")
+
+         : `
+          <p>
+           لم يؤد الطالب أي اختبار حتى الآن.
+          </p>
+         `
+       }
+
+      </div>
+
+
+      <div
+       style="
+        margin-top:10px;
+        color:#777;
+        font-size:13px;
+       ">
+
+       ${
+        sub
+
+         ? "الاشتراك حتى: " +
+           new Date(
+            sub.expires_at
+           ).toLocaleDateString(
+            "ar-SA"
+           )
+
+         : "لا يوجد اشتراك فعال"
+       }
+
+      </div>
+
+
+     </div>
+
+    `;
+
+   }
+  ).join("");
+
+}
+
+
+/* =================================================
+   LOGOUT
+================================================= */
+
+async function logout(){
+
+ try{
+
+  await db.auth.signOut();
+
+ }catch(error){
+
+  console.warn(error);
+
+ }
+
+
+ currentUser = null;
+ currentProfile = null;
+
+ hasSubscription = false;
+
+ subjects = [];
+ sections = [];
+ contents = [];
+
+ currentSubject = null;
+ currentSection = null;
+
+
+ document
+  .getElementById("app")
+  .classList.add("hidden");
+
+
+ document
+  .getElementById("landing")
+  .classList.remove("hidden");
+
+
+ document
+  .getElementById("sidebar")
+  .classList.remove("open");
+
+}
+
+
+/* =================================================
+   MOBILE
+================================================= */
+
+function toggleSidebar(){
+
+ document
+  .getElementById("sidebar")
+  .classList.toggle("open");
+
+}
+
+
+/* =================================================
+   AUTH STATE
+================================================= */
+
+db.auth.onAuthStateChange(
+ async (
+  event,
+  session
+ )=>{
+
+  if(
+   session &&
+   !currentUser
+  ){
+
+   currentUser =
+    session.user;
+
+   await loadApp();
+
+  }
+
+
+  if(
+   !session &&
+   currentUser
+  ){
+
+   currentUser = null;
+   currentProfile = null;
+
+  }
+
+ }
+);
+
+
+/* =================================================
+   GLOBAL ERROR
+================================================= */
+
+window.addEventListener(
+ "error",
+ event=>{
+
+  console.error(
+   "JS Error:",
+   event.error || event.message
+  );
+
+ }
+);
+
+
+/* =================================================
+   START
+================================================= */
+
+(async function(){
+
+ try{
+
+  const {
+   data:{session}
+  } =
+   await db.auth.getSession();
+
+
+  if(session){
+
+   currentUser =
+    session.user;
+
+   await loadApp();
+
+  }else{
+
+   hideLoading();
+
+  }
+
+ }catch(error){
+
+  console.error(error);
+
+  hideLoading();
+
+ }
+
+})();
+
+</script>
+
+</body>
+</html>
